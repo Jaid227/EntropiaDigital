@@ -1,39 +1,46 @@
-function startSite(){
+const intro = document.getElementById("intro");
+const logoIntro = document.getElementById("logoIntro");
+const logoHeader = document.querySelector(".logo-header");
 
-    const bg = document.querySelector(".dark-bg");
-    const logo = document.getElementById("mainLogo");
-    const intro = document.getElementById("intro");
-    const header = document.getElementById("header");
-    const main = document.getElementById("mainContent");
+logoIntro.addEventListener("click", () => {
 
-    // FASE 1: Fondo se contrae
-    bg.style.clipPath = "circle(0% at 50% 50%)";
+    intro.classList.add("hide");
 
-    // FASE 2: Logo sube visualmente
-    setTimeout(()=>{
-        logo.style.transition = "all 1s ease";
-        logo.style.transform = "translateY(-200px) scale(0.5)";
-    },900);
-
-    // FASE 3: Ocultar intro y colocar header real
-    setTimeout(()=>{
+    setTimeout(() => {
         intro.style.display = "none";
-        header.style.top = "0";
-        main.style.display = "block";
-        document.body.style.overflow = "auto";
-    },1800);
+        logoHeader.style.opacity = "1";
+    }, 1000);
+
+});
+
+/* ACORDEÓN */
+
+function toggleCard(element){
+    const card = element.parentElement;
+    const allCards = document.querySelectorAll(".card");
+
+    allCards.forEach(c => {
+        if(c !== card){
+            c.classList.remove("active");
+        }
+    });
+
+    card.classList.toggle("active");
 }
 
-function toggleInfo(id){
-    const element = document.getElementById(id);
-    element.style.display =
-        element.style.display === "block" ? "none" : "block";
+/* SCROLL SUAVE */
+
+function scrollToSection(){
+    document.getElementById("paquetes").scrollIntoView({
+        behavior:"smooth"
+    });
 }
 
-function contratar(paquete){
-    let numero = "5591461227";
-    let mensaje = "Hola Jaid, quiero contratar el " + paquete;
-    let url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensaje);
+/* WHATSAPP */
+
+function contactar(paquete){
+    const numero = "5591461227"; 
+    const mensaje = `Hola, estoy interesado en el paquete: ${paquete}`;
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
     window.open(url, "_blank");
-
 }
