@@ -3,95 +3,110 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fabrica de Diseño con la Mandragora Entropica</title>
+<title>Mandrágora Entrópica | Desarrollo Web Inteligente</title>
 <link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <!-- INTRO -->
 <div id="intro">
     <div class="dark-bg"></div>
-    <img src="imagenes/logomandragora1.png" alt="Logo" class="logo" id="mainLogo" onclick="startSite()">
+    <img src="imagenes/logomandragora1.png" alt="Logo Mandrágora" class="logo" id="logoIntro">
 </div>
 
-<!-- HEADER -->
-<header id="header">
-    <img src="imagenes/logomandragora1.png" class="logo-small">
-    <div>
-        <h1>Fabrica de Diseño con la Mandragora Entropica</h1>
-        <p>Transformamos el caos digital en poder creativo.</p>
-    </div>
+<!-- HEADER NORMAL (NO FIXED) -->
+<header class="header">
+    <img src="imagenes/logomandragora1.png" alt="Logo Mandrágora" class="logo-header">
 </header>
 
-<!-- CONTENIDO -->
-<div id="mainContent">
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Mandrágora Entrópica</h1>
+        <p>Transformamos el caos digital en sistemas que venden por ti 24/7.</p>
+        <button class="btn-primary" onclick="scrollToSection()">Ver Soluciones</button>
+    </div>
+</section>
 
-<section class="paquetes">
+<!-- PAQUETES -->
+<section id="paquetes" class="paquetes">
 
-<div class="card">
-<button class="btn-paquete" onclick="toggleInfo('basico')">
-PAQUETE BÁSICO – $3,500 MXN
-</button>
-<div id="basico" class="info">
-<ul>
-<li>Hasta 3 secciones</li>
-<li>Diseño adaptable a celular</li>
-<li>Botón directo a WhatsApp</li>
-<li>Entrega lista para publicar</li>
-</ul>
-<button onclick="contratar('PAQUETE BÁSICO – $3,500 MXN')" class="btn-contratar">
-Contratar
-</button>
-</div>
-</div>
+    <h2>Nuestras Soluciones Digitales</h2>
 
-<div class="card">
-<button class="btn-paquete" onclick="toggleInfo('profesional')">
-PAQUETE PROFESIONAL – $6,500 MXN
-</button>
-<div id="profesional" class="info">
-<ul>
-<li>Hasta 6 secciones</li>
-<li>Diseño personalizado</li>
-<li>Formulario de contacto</li>
-<li>Optimización básica SEO</li>
-<li>Integración de mapa y redes sociales</li>
-</ul>
-<button onclick="contratar('PAQUETE PROFESIONAL – $6,500 MXN')" class="btn-contratar">
-Contratar
-</button>
-</div>
-</div>
+    <div class="card">
+        <div class="card-header" onclick="toggleCard(this)">
+            🥉 Landing con WhatsApp
+        </div>
+        <div class="card-body">
+            <ul>
+                <li>Diseño profesional adaptable</li>
+                <li>Botón WhatsApp automático</li>
+                <li>Optimización móvil</li>
+            </ul>
+            <p class="precio">$1,500 – $3,000 MXN</p>
+            <button onclick="contactar('Landing con WhatsApp')" class="btn-secundario">
+                Solicitar este paquete
+            </button>
+        </div>
+    </div>
 
-<div class="card">
-<button class="btn-paquete" onclick="toggleInfo('premium')">
-PAQUETE PREMIUM – Desde $12,000 MXN
-</button>
-<div id="premium" class="info">
-<ul>
-<li>Sitio completo personalizado</li>
-<li>Panel de administración</li>
-<li>Integración avanzada</li>
-<li>Asesoría dominio y hosting</li>
-<li>Soporte post-entrega</li>
-</ul>
-<button onclick="contratar('PAQUETE PREMIUM – Desde $12,000 MXN')" class="btn-contratar">
-Contratar
-</button>
-</div>
-</div>
+    <div class="card">
+        <div class="card-header" onclick="toggleCard(this)">
+            🥈 Página + Formulario Funcional
+        </div>
+        <div class="card-body">
+            <ul>
+                <li>Formulario con validaciones</li>
+                <li>Envío automático</li>
+                <li>Base de datos básica</li>
+            </ul>
+            <p class="precio">$2,500 – $4,500 MXN</p>
+            <button onclick="contactar('Página + Formulario')" class="btn-secundario">
+                Solicitar este paquete
+            </button>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" onclick="toggleCard(this)">
+            🥇 Sistema con Google Sheets
+        </div>
+        <div class="card-body">
+            <ul>
+                <li>Datos guardados en Sheets</li>
+                <li>Panel editable</li>
+                <li>Automatización inteligente</li>
+            </ul>
+            <p class="precio">$3,500 – $6,000 MXN</p>
+            <button onclick="contactar('Sistema con Sheets')" class="btn-secundario">
+                Solicitar este paquete
+            </button>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" onclick="toggleCard(this)">
+            💎 Sistema con Drive + Imágenes
+        </div>
+        <div class="card-body">
+            <ul>
+                <li>Subida de imágenes</li>
+                <li>Guardado automático en Drive</li>
+                <li>Registro automático</li>
+            </ul>
+            <p class="precio">$5,000 – $8,000 MXN</p>
+            <button onclick="contactar('Sistema con Drive + Imágenes')" class="btn-secundario">
+                Solicitar este paquete
+            </button>
+        </div>
+    </div>
 
 </section>
 
-<section class="contacto">
-<h3>Contacto</h3>
-<p><strong>Jaid Lozano Reyes</strong></p>
-<p>📱 55 9146 1227</p>
-<p>📧 jaidlozanoreyes@gmail.com</p>
-</section>
-
-</div>
+<footer>
+    <p>© 2026 Mandrágora Entrópica | Desarrollo Web Estratégico</p>
+</footer>
 
 <script src="script.js"></script>
 </body>
