@@ -31,8 +31,9 @@ function toggleInfo(id){
 }
 
 function contratar(paquete){
-    let numero = "52915591461227";
+    let numero = "5591461227";
     let mensaje = "Hola Jaid, quiero contratar el " + paquete;
     let url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensaje);
     window.open(url, "_blank");
+
 }
