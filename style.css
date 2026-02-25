@@ -38,11 +38,11 @@ body{
 /* HEADER */
 #header{
     position:fixed;
-    top:-120px;
+    top:-150px;
     left:0;
     width:100%;
     background:#0d0d0d;
-    padding:15px;
+    padding:15px 20px;
     display:flex;
     align-items:center;
     gap:15px;
@@ -70,7 +70,7 @@ body{
 /* MAIN */
 #mainContent{
     display:none;
-    padding:140px 20px 40px 20px;
+    padding:170px 20px 40px 20px;
     background:linear-gradient(135deg,#1a1a1a,#2d0036,#000);
     min-height:100vh;
 }
@@ -93,6 +93,11 @@ body{
     font-size:16px;
     border-radius:10px;
     cursor:pointer;
+    transition:.3s;
+}
+
+.btn-paquete:hover{
+    background:#9c4dff;
 }
 
 .info{
@@ -119,9 +124,37 @@ body{
     margin-top:60px;
 }
 
-@media(max-width:600px){
+/* ============================= */
+/* 🔥 RESPONSIVE PARA CELULAR 🔥 */
+/* ============================= */
+
+@media(max-width:768px){
+
     #header{
         flex-direction:column;
         text-align:center;
+        padding:10px;
     }
+
+    .logo-small{
+        width:45px;
+    }
+
+    #header h1{
+        font-size:14px;
+    }
+
+    #header p{
+        font-size:11px;
+    }
+
+    #mainContent{
+        padding:150px 15px 30px 15px;
+    }
+
+    .btn-paquete{
+        font-size:14px;
+        padding:15px;
+    }
+
 }
