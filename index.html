@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fabrica de Diseño con la Mandragora Entropica</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+    <div class="dark-bg"></div>
+    <img src="imagenes/logomandragora1.png" alt="Logo" class="logo" id="mainLogo" onclick="startSite()">
+</div>
+
+<!-- HEADER -->
+<header id="header">
+    <img src="imagenes/logomandragora1.png" class="logo-small">
+    <div>
+        <h1>Fabrica de Diseño con la Mandragora Entropica</h1>
+        <p>Transformamos el caos digital en poder creativo.</p>
+    </div>
+</header>
+
+<!-- CONTENIDO -->
+<div id="mainContent">
+
+<section class="paquetes">
+
+<div class="card">
+<button class="btn-paquete" onclick="toggleInfo('basico')">
+PAQUETE BÁSICO – $3,500 MXN
+</button>
+<div id="basico" class="info">
+<ul>
+<li>Hasta 3 secciones</li>
+<li>Diseño adaptable a celular</li>
+<li>Botón directo a WhatsApp</li>
+<li>Entrega lista para publicar</li>
+</ul>
+<button onclick="contratar('PAQUETE BÁSICO – $3,500 MXN')" class="btn-contratar">
+Contratar
+</button>
+</div>
+</div>
+
+<div class="card">
+<button class="btn-paquete" onclick="toggleInfo('profesional')">
+PAQUETE PROFESIONAL – $6,500 MXN
+</button>
+<div id="profesional" class="info">
+<ul>
+<li>Hasta 6 secciones</li>
+<li>Diseño personalizado</li>
+<li>Formulario de contacto</li>
+<li>Optimización básica SEO</li>
+<li>Integración de mapa y redes sociales</li>
+</ul>
+<button onclick="contratar('PAQUETE PROFESIONAL – $6,500 MXN')" class="btn-contratar">
+Contratar
+</button>
+</div>
+</div>
+
+<div class="card">
+<button class="btn-paquete" onclick="toggleInfo('premium')">
+PAQUETE PREMIUM – Desde $12,000 MXN
+</button>
+<div id="premium" class="info">
+<ul>
+<li>Sitio completo personalizado</li>
+<li>Panel de administración</li>
+<li>Integración avanzada</li>
+<li>Asesoría dominio y hosting</li>
+<li>Soporte post-entrega</li>
+</ul>
+<button onclick="contratar('PAQUETE PREMIUM – Desde $12,000 MXN')" class="btn-contratar">
+Contratar
+</button>
+</div>
+</div>
+
+</section>
+
+<section class="contacto">
+<h3>Contacto</h3>
+<p><strong>Jaid Lozano Reyes</strong></p>
+<p>📱 55 9146 1227</p>
+<p>📧 jaidlozanoreyes@gmail.com</p>
+</section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
