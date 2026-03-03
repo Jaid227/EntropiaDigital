@@ -1,6 +1,11 @@
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body{background:#0f0f14;color:white;overflow-x:hidden;}
+ul{
+list-style:none;
+padding-left:0;
+margin:0;
+}
 
 /* PARTICULAS */
 #particles{
@@ -115,4 +120,139 @@ transition:0.3s ease;
 background:#08d9d6;
 color:#0f0f14;
 transform:translateY(-3px);
+}
+
+
+/* ========================= */
+/* NUEVAS SECCIONES AGREGADAS */
+/* ========================= */
+
+/* BOTON PRINCIPAL (WhatsApp CTA grande) */
+.btn-principal{
+display:inline-block;
+margin-top:25px;
+padding:15px 35px;
+border:none;
+border-radius:40px;
+background:linear-gradient(90deg,#00ff9d,#08d9d6);
+color:#0f0f14;
+font-weight:700;
+text-decoration:none;
+transition:0.3s ease;
+box-shadow:0 0 20px #08d9d650;
+}
+
+.btn-principal:hover{
+transform:scale(1.05);
+box-shadow:0 0 30px #00ff9d;
+}
+
+/* BENEFICIOS */
+.beneficios{
+padding:80px 10%;
+text-align:center;
+background:#12121a;
+}
+
+.beneficios ul{
+margin-top:30px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+}
+
+.beneficios li{
+background:#1c1c27;
+padding:15px;
+border-radius:12px;
+font-weight:500;
+transition:0.3s ease;
+}
+
+.beneficios li:hover{
+background:#08d9d6;
+color:#0f0f14;
+transform:translateY(-5px);
+}
+
+/* PROBLEMA */
+.problema{
+padding:80px 10%;
+text-align:center;
+background:#14141c;
+}
+
+.problema h2{
+margin-bottom:20px;
+font-size:2rem;
+}
+
+.problema p{
+max-width:800px;
+margin:15px auto;
+opacity:0.85;
+line-height:1.6;
+}
+
+/* INCLUYE */
+.incluye{
+padding:80px 10%;
+text-align:center;
+background:#101018;
+}
+
+.incluye ul{
+margin-top:25px;
+}
+
+.incluye li{
+margin:12px 0;
+font-weight:500;
+}
+
+.incluye p{
+margin-top:25px;
+font-style:italic;
+opacity:0.8;
+}
+
+/* IDEAL */
+.ideal{
+padding:80px 10%;
+text-align:center;
+background:#14141c;
+}
+
+.ideal ul{
+margin-top:25px;
+}
+
+.ideal li{
+margin:10px 0;
+font-weight:500;
+}
+
+.ideal p{
+margin-top:25px;
+font-weight:600;
+color:#08d9d6;
+}
+
+/* CTA FINAL */
+.cta-final{
+padding:100px 20px;
+text-align:center;
+background:linear-gradient(135deg,#08d9d620,#00ff9d20);
+}
+
+.cta-final h2{
+font-size:2.2rem;
+margin-bottom:20px;
+}
+
+.cta-final p{
+max-width:700px;
+margin:20px auto;
+line-height:1.6;
+font-weight:500;
 }
