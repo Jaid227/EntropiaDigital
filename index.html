@@ -1,106 +1,115 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mandrágora Entrópica | Landing Pages Estratégicas</title>
+<title>Mandrágora Entrópica | Landing Estratégicas</title>
 <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<!-- ================= INTRO ================= -->
+<!-- PARTICULAS -->
+<canvas id="particles"></canvas>
 
+<!-- INTRO -->
 <div id="intro">
     <div class="dark-bg"></div>
-    <img src="imagenes/logomandragora1.png" alt="Logo Mandrágora" class="logo" id="logoIntro">
+    <img src="imagenes/logomandragora1.png" class="logo" id="logoIntro">
 </div>
 
-<!-- ================= HEADER ================= -->
-
+<!-- HEADER -->
 <header class="header">
-    <img src="imagenes/logomandragora1.png" alt="Logo Mandrágora" class="logo-header">
+    <img src="imagenes/logomandragora1.png" class="logo-header">
     <div class="contacto-header">
         <span>Jaid Lozano</span>
         <span>📱 55 9146 1227</span>
         <span>✉ jaidlozanoreyes@gmail.com</span>
+        <p>Ingeniero en sistemas computacionales</p>
     </div>
 </header>
 
-<!-- ================= HERO ================= -->
-
-<section class="hero">
-    <div class="hero-content">
-        <h1>Landing Pages que convierten visitas en ventas</h1>
-        <p>Diseñadas estratégicamente para que tu negocio venda 24/7 mediante un botón inteligente de WhatsApp.</p>
-    </div>
+<!-- HERO -->
+<section class="hero reveal">
+    <h1>Landing Pages que venden por ti 24/7</h1>
+    <p>Diseñadas estratégicamente para convertir visitas en clientes mediante WhatsApp inteligente.</p>
 </section>
 
-<!-- ================= QUE ES LANDING ================= -->
-
-<section class="landing-info">
+<!-- INFO -->
+<section class="landing-info reveal">
     <h2>¿Qué es una Landing Page?</h2>
     <p>
-        Una landing page es una página web enfocada 100% en conversión.
-        No tiene distracciones, no tiene múltiples rutas.
-        Tiene un solo objetivo: que el visitante realice una acción.
-    </p>
-    <p>
-        En este caso: hacer clic en un botón inteligente de WhatsApp que envía un mensaje preconfigurado
-        y genera contacto directo inmediato contigo.
+        Es una página estratégica diseñada para generar una sola acción:
+        contacto directo y conversión inmediata.
+        Sin distracciones. Sin menús innecesarios.
+        Solo ventas.
     </p>
 </section>
 
-<!-- ================= PAQUETES ================= -->
+<!-- CONTADOR -->
+<section class="urgencia reveal">
+    <h2>🔥 Promoción Activa</h2>
+    <p class="promo">1 mes gratis</p> 
+    <p>de revisiones y mejoras sin costo adicional.</p>
+            <!--div id="contador"></div-->
+        <ul>
+            <p>Incluye</p> 
+            <p>Diseño adaptable</p> 
+            <p>Botón WhatsApp inteligente</p> 
+            <p>Optimización móvil</p> 
+            
+        </ul>
 
+</section>
+
+
+
+
+
+<!---------------------------------->
+
+<!-- PAQUETES -->
 <section id="paquetes" class="paquetes">
 
-<h2>Paquetes Profesionales</h2>
-
-<div class="card">
-    <h3>🥉 Landing Esencial</h3>
+<div class="card destacado reveal">
+    <h3>Landing Esencial</h3>
+    <p class="badge recomendado">Ideal para comenzar</p>
     <ul>
-        <li>Diseño moderno adaptable</li>
-        <li>Botón inteligente de WhatsApp</li>
-        <li>Optimización móvil</li>
-        <li>Copy básico estratégico</li>
-        <li class="promo">✔ Revisiones y mejoras durante 1 mes</li>
-    </ul>
-    <p class="precio">$1,500 MXN</p>
-    <button onclick="contactar('Landing Esencial')" class="btn-secundario">Solicitar</button>
-</div>
-
-<div class="card destacado">
-    <h3>🥈 Landing Profesional</h3>
-    <ul>
-        <li>Todo lo del paquete Esencial</li>
-        <li>Secciones adicionales estratégicas</li>
         <li>Animaciones modernas</li>
-        <li>Optimización SEO básica</li>
-        <li class="promo">✔ Revisiones y mejoras durante 1 mes</li>
+        <li>SEO básico</li>
+        <li>Secciones estratégicas</li>
+        <li class="promo">✔ 1 mes de mejoras</li>
     </ul>
-    <p class="precio">$2,500 MXN</p>
+    <p class="tachado">$3,500 MXN</p>
+    <p class="precio">$1,500 MXN</p>
     <button onclick="contactar('Landing Profesional')" class="btn-secundario">Solicitar</button>
+    <a href="https://jaid227.github.io/landing_3/" class="btn-ejemplo">
+    Ver ejemplo de este paquete
+</a>
 </div>
 
-<div class="card premium">
-    <h3>🥇 Landing Premium Estratégica</h3>
+<div class="card premium reveal">
+    <h3>Landing Profecional</h3>
+    <p class="badge">Más Solicitado</p>
     <ul>
-        <li>Todo lo del Profesional</li>
-        <li>Diseño totalmente personalizado</li>
-        <li>Psicología de conversión avanzada</li>
-        <li>Animaciones premium</li>
-        <li>Optimización avanzada de velocidad</li>
-        <li class="promo">✔ Revisiones y mejoras durante 1 mes</li>
+        <li>Psicología de ventas avanzada</li>
+        <li>Optimización de velocidad</li>
+        <li>Diseño personalizado</li>
+        <li class="promo">✔ 1 mes de mejoras</li>
     </ul>
-    <p class="precio">$3,500 MXN</p>
-    <button onclick="contactar('Landing Premium Estratégica')" class="btn-secundario">Solicitar</button>
+    <p class="tachado">$5,000 MXN</p>
+    <p class="precio">$2,500 MXN</p>
+    <button onclick="contactar('Landing Premium')" class="btn-secundario">Solicitar</button>
+    <a href="https://jaid227.github.io/landing_4/" class="btn-ejemplo">
+    Ver ejemplo de este paquete
+</a>
 </div>
 
 </section>
 
 <footer>
-    <p>© 2026 Mandrágora Entrópica | Desarrollo Web Estratégico</p>
+© 2026 Mandrágora Entrópica | Desarrollo Web Estratégico
 </footer>
 
 <script src="script.js"></script>
