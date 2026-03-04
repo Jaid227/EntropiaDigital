@@ -331,21 +331,25 @@ color:#00ff9d;
 /* OVERLAY COMPLETO */
 #overlay-img{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:#000;
+inset:0; /* ocupa toda la pantalla */
+background:#000; /* fondo sólido */
 display:flex;
 justify-content:center;
 align-items:center;
 z-index:99999;
+
 opacity:0;
 visibility:hidden;
-transition:0.3s ease;
+transition:opacity 0.3s ease;
 }
 
 #overlay-img.active{
 opacity:1;
 visibility:visible;
+}
+
+#overlay-img img{
+max-width:95vw;   /* 95% del ancho visible */
+max-height:95vh;  /* 95% del alto visible */
+object-fit:contain; /* evita que se deforme */
 }
