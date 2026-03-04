@@ -76,3 +76,12 @@ p.y+=p.dy;
 requestAnimationFrame(animate);
 }
 animate();
+
+
+
+
+
+function toggleImagen(){
+    const overlay = document.getElementById("overlay-img");
+    overlay.classList.toggle("active");
+}
