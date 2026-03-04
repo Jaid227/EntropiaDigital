@@ -19,7 +19,7 @@ document.getElementById("paquetes").scrollIntoView({behavior:"smooth"});
 
 // WHATSAPP
 function contactar(paquete){
-const numero="5215591461227";
+const numero="5591461227";
 const mensaje=`Hola Jaid, me interesa el paquete ${paquete}.`;
 window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`,"_blank");
 }
