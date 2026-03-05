@@ -41,6 +41,9 @@ border-radius:50%;
 cursor:pointer;
 transition:1s ease;
 z-index:10;
+
+/* animación flotante */
+animation: flotar 3s ease-in-out infinite;
 }
 #intro.hide .dark-bg{clip-path:circle(0% at 50% 50%);}
 #intro.hide .logo{transform:translateY(-40vh) scale(0.5);}
@@ -352,4 +355,70 @@ visibility:visible;
 max-width:95vw;   /* 95% del ancho visible */
 max-height:95vh;  /* 95% del alto visible */
 object-fit:contain; /* evita que se deforme */
+}
+
+
+
+
+
+
+
+@keyframes flotar{
+
+0%{
+transform:translateY(0px) rotate(0deg);
+}
+
+50%{
+transform:translateY(-15px) rotate(1deg);
+}
+
+100%{
+transform:translateY(0px) rotate(0deg);
+}
+
+}
+
+
+
+
+
+
+/* CIRCULO DE PULSO */
+
+.pulse-circle{
+
+position:absolute;
+
+width:200px;
+height:200px;
+
+border-radius:50%;
+
+background:rgba(3, 248, 138, 0.4);
+
+filter:blur(20px);
+
+animation:pulso 2s infinite;
+
+}
+
+/* ANIMACION */
+
+@keyframes pulso{
+
+0%{
+transform:scale(0.9);
+opacity:0.3;
+}
+
+70%{
+transform:scale(2.5);
+opacity:0;
+}
+
+100%{
+opacity:0;
+}
+
 }
