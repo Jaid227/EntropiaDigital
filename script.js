@@ -90,23 +90,15 @@ function toggleImagen(){
 
 
 function cerrarIntro(){
-    document.getElementById("intro").classList.add("hide");
-}
-
-
-function cerrarIntro(){
 
 const intro = document.getElementById("intro")
+const logoHeader = document.querySelector(".logo-header")
 
 intro.classList.add("hide")
 
 setTimeout(()=>{
 intro.style.display="none"
+logoHeader.style.opacity="1"
 },1000)
 
-}
-
-
-function cerrarIntro(){
-document.getElementById("intro").classList.add("hide");
 }
