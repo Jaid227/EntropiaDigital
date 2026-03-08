@@ -18,6 +18,7 @@ z-index:-1;
 }
 
 /* INTRO */
+
 #intro{
 position:fixed;
 width:100%;
@@ -27,6 +28,9 @@ justify-content:center;
 align-items:center;
 z-index:1000;
 }
+
+/* fondo oscuro */
+
 .dark-bg{
 position:absolute;
 width:100%;
@@ -35,18 +39,107 @@ background:#0f0f14;
 transition:clip-path 1s ease;
 clip-path:circle(150% at 50% 50%);
 }
+
+/* LOGO */
+
 .logo{
 width:220px;
 border-radius:50%;
 cursor:pointer;
 transition:1s ease;
 z-index:10;
-
-/* animación flotante */
-animation: flotar 3s ease-in-out infinite;
+animation:flotar 3s ease-in-out infinite;
 }
-#intro.hide .dark-bg{clip-path:circle(0% at 50% 50%);}
-#intro.hide .logo{transform:translateY(-40vh) scale(0.5);}
+
+/* TEXTO CENTRADO SOBRE EL LOGO */
+
+.click-title{
+
+position:absolute;
+
+top:50%;
+left:50%;
+
+transform:translate(-50%,-50%);
+
+font-size:38px;
+letter-spacing:8px;
+
+color:white;
+
+z-index:20;
+
+/* brillo */
+
+text-shadow:
+0 0 5px rgba(28, 239, 66, 0.618),
+0 0 10px rgba(21, 126, 5, 0.715),
+0 0 20px #7aa6ff,
+0 0 40px #7aa6ff,
+0 0 80px #7aa6ff;
+
+/* animación destello */
+
+animation:destello 5s infinite;
+
+}
+
+
+.click-title{
+cursor:pointer;
+}
+
+/* ANIMACION TEXTO */
+
+@keyframes destello{
+
+
+
+100%{
+opacity:0;
+transform:translate(-50%,-50%) scale(5);
+}
+
+}
+
+/* animación flotante del logo */
+
+@keyframes flotar{
+
+0%{transform:translateY(0px);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0px);}
+
+}
+
+
+#intro.hide{
+opacity:0;
+transition:opacity 1s ease;
+pointer-events:none;
+}
+
+
+
+
+
+
+
+/* salida del intro */
+
+#intro.hide .dark-bg{
+clip-path:circle(0% at 50% 50%);
+}
+
+#intro.hide .logo{
+transform:translateY(-40vh) scale(0.5);
+}
+
+#intro.hide .click-title{
+opacity:0;
+transform:translate(-50%,-50%) scale(0.5);
+transition:1s;
+}
 
 /* HEADER */
 .header{text-align:center;padding:20px;}
@@ -422,3 +515,9 @@ opacity:0;
 }
 
 }
+
+
+
+
+
+
