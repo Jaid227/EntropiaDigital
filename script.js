@@ -85,3 +85,28 @@ function toggleImagen(){
     const overlay = document.getElementById("overlay-img");
     overlay.classList.toggle("active");
 }
+
+
+
+
+function cerrarIntro(){
+    document.getElementById("intro").classList.add("hide");
+}
+
+
+function cerrarIntro(){
+
+const intro = document.getElementById("intro")
+
+intro.classList.add("hide")
+
+setTimeout(()=>{
+intro.style.display="none"
+},1000)
+
+}
+
+
+function cerrarIntro(){
+document.getElementById("intro").classList.add("hide");
+}
