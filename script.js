@@ -1,4 +1,5 @@
 
+
 // INTRO
 const intro=document.getElementById("intro");
 const logoIntro=document.getElementById("logoIntro");
@@ -102,3 +103,42 @@ logoHeader.style.opacity="1"
 },1000)
 
 }
+
+
+
+// =========================
+// MODO CLARO / OSCURO
+// =========================
+
+function toggleTheme() {
+    const body = document.body;
+    const currentTheme = body.getAttribute('data-theme');
+    const btn = document.querySelector('.toggle-theme');
+    
+    if (currentTheme === 'light') {
+        body.removeAttribute('data-theme');
+        btn.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+    } else {
+        body.setAttribute('data-theme', 'light');
+        btn.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+    }
+}
+
+// Cargar tema guardado
+function loadTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const btn = document.querySelector('.toggle-theme');
+    
+    if (savedTheme === 'light') {
+        document.body.setAttribute('data-theme', 'light');
+        btn.textContent = '☀️';
+    } else {
+        document.body.removeAttribute('data-theme');
+        btn.textContent = '🌙';
+    }
+}
+
+// Ejecutar al cargar la página
+document.addEventListener('DOMContentLoaded', loadTheme);
