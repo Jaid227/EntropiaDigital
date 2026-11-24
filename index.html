@@ -311,7 +311,6 @@
       box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
     }
 
-    /* Se sube con normalidad al hacer scroll */
     .navbar {
       position: relative;
       top: auto;
@@ -325,7 +324,7 @@
     .nav-inner {
       max-width: 1120px;
       margin: 0 auto;
-      padding: 12px 20px;
+      padding: 10px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -336,31 +335,36 @@
     .brand-box {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       text-decoration: none;
       color: var(--text-main);
       cursor: pointer;
     }
 
+    /* Logo sin fondo, sin borde ni margen */
     .brand-logo-wrap {
-      width: 50px;
-      height: 50px;
-      border-radius: 16px 8px 16px 8px;
-      overflow: hidden;
-      border: 2px solid var(--green-leaf);
-      background: var(--bg-elevated);
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
+      background: transparent;
+      border: none;
+      padding: 0;
+      margin: 0;
+      box-shadow: none;
       flex-shrink: 0;
-      box-shadow: 0 0 0 2px rgba(139, 94, 60, 0.25);
     }
 
     .brand-logo-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: 46px;
+      width: auto;
+      max-width: 72px;
+      object-fit: contain;
       display: block;
+      background: transparent;
+      border: none;
+      padding: 0;
+      margin: 0;
+      box-shadow: none;
     }
 
     .brand-title {
@@ -494,27 +498,30 @@
       gap: 12px;
     }
 
+    /* Logo central sin fondo, sin borde ni margen */
     .hero-logo-box {
-      width: 118px;
-      height: 118px;
-      margin: 0 auto 16px;
-      border-radius: 30px 14px 30px 14px;
-      overflow: hidden;
-      border: 2px solid var(--green-bright);
-      background: var(--bg-card);
+      margin: 0 auto 14px;
+      padding: 0;
+      background: transparent;
+      border: none;
+      box-shadow: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow:
-        0 12px 28px rgba(0, 0, 0, 0.3),
-        0 0 24px var(--glow-a);
     }
 
     .hero-logo-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: 112px;
+      width: auto;
+      max-width: 180px;
+      object-fit: contain;
       display: block;
+      background: transparent;
+      border: none;
+      padding: 0;
+      margin: 0;
+      box-shadow: none;
+      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.35));
     }
 
     .badge {
@@ -1156,7 +1163,7 @@
             <div class="app-icon">⌨️</div>
             <h3>Mecanografía Aérea</h3>
             <p>
-              Entrenador progresivo de teclado desde la fila guía hasta abecedario, palabras cortas y contrarreloj de 60s, con guía visual por dedo, PPM, precisión y logros.[cite: 1]
+              Entrenador progresivo de teclado desde la fila guía hasta abecedario, palabras cortas y contrarreloj de 60s, con guía visual por dedo, PPM, precisión y logros.
             </p>
           </div>
           <a class="app-link" href="https://jaid227.github.io/MecanografiaAerea/" target="_blank" rel="noopener noreferrer">
@@ -1496,12 +1503,12 @@
       renderPanel(currentPanel);
     });
 
-    // 2. RESPALDO DE RUTA PARA LOGO (imagenes/logomandragora1.jpeg) Y CV (imagenes/CV.jpeg)
+    // 2. RESPALDO DE RUTA PARA LOGO Y CV
     document.querySelectorAll(".mandragora-logo-img").forEach((img) => {
       img.addEventListener("error", () => {
         if (!img.dataset.fallbackTried) {
           img.dataset.fallbackTried = "1";
-          img.src = "imagenes/logomandragora1.png";
+          img.src = "logomandragora1.png";
         }
       });
     });
