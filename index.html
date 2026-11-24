@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Mandrágora Entrópica | Desarrollo Web Estratégico</title>
+  <style>
+    :root {
+      /* Estación por defecto: Primavera · Modo Nocturno */
+      --bg-forest-deep: #0c140e;
+      --bg-soil-dark: #15100c;
+      --bg-panel: rgba(18, 26, 19, 0.92);
+      --bg-card: rgba(29, 22, 17, 0.92);
+      --bg-elevated: rgba(38, 31, 22, 0.95);
+      --nav-bg: rgba(14, 21, 15, 0.88);
+      --footer-bg: rgba(13, 19, 14, 0.92);
+      --cv-surface: #ffffff;
+
+      --text-main: #f3efe6;
+      --text-muted: #c8beae;
+      --text-moss: #9ad1a5;
+
+      --green-leaf: #4f9d69;
+      --green-bright: #74c69d;
+      --brown-bark: #5c3d28;
+      --brown-wood: #8b5e3c;
+      --amber-cosmos: #d49b35;
+
+      --glow-a: rgba(79, 157, 105, 0.16);
+      --glow-b: rgba(139, 94, 60, 0.18);
+      --glow-c: rgba(212, 155, 53, 0.08);
+      --bg-grad-start: #0c140e;
+      --bg-grad-mid: #121b13;
+      --bg-grad-end: #16100b;
+
+      --border-organic: rgba(139, 94, 60, 0.38);
+      --border-leaf: rgba(116, 198, 157, 0.28);
+    }
+
+    /* ================= PRIMAVERA MULTICOLOR FLORAL ================= */
+    body[data-season="primavera"] {
+      --green-leaf: #52b788;
+      --green-bright: #9ef01a;
+      --text-moss: #d8f3dc;
+      --brown-wood: #8b5e3c;
+      --amber-cosmos: #ffd166;
+
+      --glow-a: rgba(255, 112, 166, 0.22);
+      --glow-b: rgba(155, 93, 229, 0.20);
+      --glow-c: rgba(255, 209, 102, 0.18);
+      --bg-grad-start: #0f1c14;
+      --bg-grad-mid: #17221b;
+      --bg-grad-end: #1c1419;
+      --border-organic: rgba(166, 124, 142, 0.42);
+      --border-leaf: rgba(158, 240, 26, 0.36);
+    }
+
+    body[data-theme="claro"][data-season="primavera"] {
+      --green-leaf: #2d936c;
+      --green-bright: #1b6b4c;
+      --text-moss: #1f5c43;
+      --brown-wood: #8d5524;
+      --amber-cosmos: #d97706;
+
+      --bg-panel: rgba(254, 251, 246, 0.94);
+      --bg-card: rgba(255, 255, 255, 0.92);
+      --bg-elevated: rgba(250, 244, 252, 0.96);
+      --nav-bg: rgba(252, 249, 244, 0.94);
+      --footer-bg: rgba(248, 244, 236, 0.96);
+
+      --text-main: #1f2421;
+      --text-muted: #4a524d;
+
+      --bg-grad-start: #eefbf2;
+      --bg-grad-mid: #fff8eb;
+      --bg-grad-end: #fceef5;
+      --glow-a: rgba(255, 112, 166, 0.18);
+      --glow-b: rgba(76, 201, 240, 0.18);
+      --glow-c: rgba(255, 209, 102, 0.24);
+      --border-organic: rgba(168, 120, 138, 0.34);
+      --border-leaf: rgba(45, 147, 108, 0.36);
+    }
+
+    body[data-season="primavera"] .explore-panel {
+      background-image:
+        radial-gradient(circle at 8% 12%, rgba(255, 112, 166, 0.16), transparent 28%),
+        radial-gradient(circle at 92% 16%, rgba(76, 201, 240, 0.16), transparent 28%),
+        radial-gradient(circle at 18% 88%, rgba(255, 209, 102, 0.17), transparent 30%),
+        radial-gradient(circle at 85% 84%, rgba(155, 93, 229, 0.16), transparent 30%),
+        radial-gradient(circle at 50% 45%, rgba(128, 237, 153, 0.08), transparent 45%);
+    }
+
+    body[data-season="primavera"] .badge,
+    body[data-season="primavera"] .package-tag {
+      background: linear-gradient(120deg, rgba(255, 112, 166, 0.22), rgba(255, 209, 102, 0.22), rgba(76, 201, 240, 0.20));
+      border-color: rgba(255, 209, 102, 0.45);
+    }
+
+    body[data-season="primavera"] .btn-primary {
+      background: linear-gradient(120deg, #ff70a6, #ff9770, #ffd670, #70d6ff);
+      background-size: 200% 200%;
+      color: #161917;
+      font-weight: 800;
+      border-color: rgba(255, 255, 255, 0.45);
+    }
+
+    body[data-season="primavera"] .app-card:nth-child(4n + 1),
+    body[data-season="primavera"] .package-card:nth-child(3n + 1) {
+      border-top: 3px solid #ff70a6;
+    }
+
+    body[data-season="primavera"] .app-card:nth-child(4n + 2),
+    body[data-season="primavera"] .package-card:nth-child(3n + 2) {
+      border-top: 3px solid #ffd166;
+    }
+
+    body[data-season="primavera"] .app-card:nth-child(4n + 3),
+    body[data-season="primavera"] .package-card:nth-child(3n + 3) {
+      border-top: 3px solid #4cc9f0;
+    }
+
+    body[data-season="primavera"] .app-card:nth-child(4n + 4) {
+      border-top: 3px solid #b5179e;
+    }
+
+    body[data-season="primavera"] .app-card:hover,
+    body[data-season="primavera"] .package-card:hover {
+      border-color: #ffd166;
+      box-shadow: 0 12px 26px rgba(255, 112, 166, 0.16);
+    }
+
+    /* VERANO */
+    body[data-season="verano"] {
+      --green-leaf: #2d6a4f;
+      --green-bright: #95d5b2;
+      --text-moss: #b7e4c7;
+      --brown-wood: #9c6644;
+      --amber-cosmos: #f4a261;
+      --glow-a: rgba(82, 183, 136, 0.19);
+      --glow-b: rgba(156, 102, 68, 0.20);
+      --glow-c: rgba(244, 162, 97, 0.12);
+    }
+
+    /* OTOÑO */
+    body[data-season="otono"] {
+      --green-leaf: #6b705c;
+      --green-bright: #dda15e;
+      --text-moss: #e6ccb2;
+      --brown-wood: #a44a2f;
+      --amber-cosmos: #e07a5f;
+      --bg-forest-deep: #140f0b;
+      --bg-panel: rgba(27, 20, 15, 0.93);
+      --bg-card: rgba(38, 27, 19, 0.93);
+      --bg-elevated: rgba(49, 35, 25, 0.95);
+      --nav-bg: rgba(22, 16, 12, 0.9);
+      --footer-bg: rgba(19, 14, 10, 0.94);
+      --bg-grad-start: #140f0b;
+      --bg-grad-mid: #1e150f;
+      --bg-grad-end: #17100c;
+      --glow-a: rgba(221, 161, 94, 0.16);
+      --glow-b: rgba(164, 74, 47, 0.19);
+      --glow-c: rgba(107, 112, 92, 0.12);
+      --border-organic: rgba(180, 105, 62, 0.42);
+      --border-leaf: rgba(221, 161, 94, 0.32);
+    }
+
+    /* INVIERNO */
+    body[data-season="invierno"] {
+      --green-leaf: #3b6e6c;
+      --green-bright: #90e0ef;
+      --text-moss: #caf0f8;
+      --brown-wood: #6f5643;
+      --amber-cosmos: #ffd166;
+      --bg-forest-deep: #0b1318;
+      --bg-panel: rgba(15, 24, 30, 0.93);
+      --bg-card: rgba(24, 28, 33, 0.93);
+      --bg-elevated: rgba(32, 37, 44, 0.95);
+      --nav-bg: rgba(11, 18, 23, 0.9);
+      --footer-bg: rgba(10, 16, 20, 0.94);
+      --bg-grad-start: #0b1318;
+      --bg-grad-mid: #101d24;
+      --bg-grad-end: #151210;
+      --glow-a: rgba(144, 224, 239, 0.14);
+      --glow-b: rgba(111, 86, 67, 0.18);
+      --glow-c: rgba(255, 209, 102, 0.08);
+      --border-organic: rgba(120, 144, 156, 0.34);
+      --border-leaf: rgba(144, 224, 239, 0.30);
+    }
+
+    /* MODO CLARO */
+    body[data-theme="claro"] {
+      --bg-panel: rgba(247, 243, 234, 0.92);
+      --bg-card: rgba(238, 231, 216, 0.95);
+      --bg-elevated: rgba(228, 219, 200, 0.96);
+      --nav-bg: rgba(243, 238, 227, 0.92);
+      --footer-bg: rgba(235, 228, 213, 0.95);
+
+      --text-main: #1f2419;
+      --text-muted: #4b4338;
+      --text-moss: #245536;
+
+      --border-organic: rgba(110, 74, 46, 0.32);
+      --border-leaf: rgba(45, 106, 79, 0.32);
+
+      --bg-grad-start: #eef3ea;
+      --bg-grad-mid: #f5f0e4;
+      --bg-grad-end: #e9dfd0;
+      --glow-a: rgba(79, 157, 105, 0.18);
+      --glow-b: rgba(139, 94, 60, 0.14);
+      --glow-c: rgba(212, 155, 53, 0.14);
+    }
+
+    body[data-theme="claro"][data-season="primavera"] {
+      --green-leaf: #2d8a4e;
+      --green-bright: #1e6f3d;
+      --text-moss: #1f6338;
+    }
+
+    body[data-theme="claro"][data-season="verano"] {
+      --green-leaf: #2b7a58;
+      --green-bright: #1b5e41;
+      --text-moss: #1c5c40;
+    }
+
+    body[data-theme="claro"][data-season="otono"] {
+      --green-leaf: #9c5221;
+      --green-bright: #8a3b12;
+      --text-moss: #783512;
+      --bg-grad-start: #f6ede2;
+      --bg-grad-mid: #f9f2e8;
+      --bg-grad-end: #efe0cc;
+    }
+
+    body[data-theme="claro"][data-season="invierno"] {
+      --green-leaf: #2c6e7a;
+      --green-bright: #1d5661;
+      --text-moss: #1b4f59;
+      --bg-grad-start: #eaf2f5;
+      --bg-grad-mid: #f3f6f7;
+      --bg-grad-end: #e2eaee;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      background-color: var(--bg-grad-start);
+      background-image:
+        radial-gradient(circle at 12% 14%, var(--glow-a), transparent 44%),
+        radial-gradient(circle at 86% 20%, var(--glow-b), transparent 46%),
+        radial-gradient(circle at 50% 88%, var(--glow-c), transparent 54%),
+        linear-gradient(175deg, var(--bg-grad-start) 0%, var(--bg-grad-mid) 50%, var(--bg-grad-end) 100%);
+      background-attachment: fixed;
+      transition: background 0.35s ease, color 0.25s ease;
+    }
+
+    .atmosphere-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-organic);
+      font-size: 0.84rem;
+    }
+
+    .atmo-label {
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-right: 4px;
+    }
+
+    .atmo-pill {
+      padding: 5px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--border-organic);
+      background: transparent;
+      color: var(--text-main);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .atmo-pill:hover {
+      border-color: var(--green-bright);
+    }
+
+    .atmo-pill.active {
+      background: var(--green-leaf);
+      color: #ffffff;
+      border-color: var(--green-bright);
+    }
+
+    .card.power-shuffle {
+      border: 1px solid rgba(212, 155, 53, 0.55);
+      background:
+        radial-gradient(circle at top right, var(--glow-a), transparent 52%),
+        linear-gradient(145deg, rgba(139, 94, 60, 0.28), var(--bg-card));
+      border-radius: 24px 12px 24px 12px;
+      padding: 24px;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
+    }
+
+    /* Se sube con normalidad al hacer scroll */
+    .navbar {
+      position: relative;
+      top: auto;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--border-organic);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .brand-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+
+    .brand-logo-wrap {
+      width: 50px;
+      height: 50px;
+      border-radius: 16px 8px 16px 8px;
+      overflow: hidden;
+      border: 2px solid var(--green-leaf);
+      background: var(--bg-elevated);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 2px rgba(139, 94, 60, 0.25);
+    }
+
+    .brand-logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand-title {
+      font-weight: 800;
+      font-size: 1.02rem;
+      line-height: 1.2;
+      color: var(--text-main);
+    }
+
+    .brand-sub {
+      font-size: 0.78rem;
+      color: var(--green-bright);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-tab {
+      padding: 8px 14px;
+      border-radius: 14px 6px 14px 6px;
+      border: 1px solid transparent;
+      background: rgba(139, 94, 60, 0.08);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .nav-tab:hover {
+      color: var(--text-main);
+      background: var(--glow-a);
+      border-color: var(--border-organic);
+    }
+
+    .nav-tab.active {
+      background: linear-gradient(135deg, var(--glow-a), var(--glow-b));
+      color: var(--green-bright);
+      border-color: var(--green-leaf);
+    }
+
+    .btn-wa-sm {
+      padding: 8px 15px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #52b788, #2d6a4f);
+      color: #f4fbf7;
+      font-weight: 800;
+      font-size: 0.86rem;
+      border: 1px solid rgba(116, 198, 157, 0.45);
+      cursor: pointer;
+    }
+
+    .explore-stage {
+      max-width: 1120px;
+      margin: 24px auto 12px;
+      padding: 0 20px;
+    }
+
+    .explore-topbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding: 12px 18px;
+      border-radius: 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-organic);
+    }
+
+    .explore-indicator {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--green-bright);
+    }
+
+    .explore-nav-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .explore-panel {
+      display: none;
+      background:
+        radial-gradient(circle at top left, var(--glow-a), transparent 46%),
+        radial-gradient(circle at bottom right, var(--glow-b), transparent 50%),
+        var(--bg-panel);
+      border: 1px solid var(--border-organic);
+      border-radius: 28px 14px 28px 14px;
+      padding: 36px 26px;
+      box-shadow:
+        0 22px 48px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      animation: fadePanel 0.24s ease;
+    }
+
+    .explore-panel.active {
+      display: block;
+    }
+
+    body.show-all-panels .explore-panel {
+      display: block;
+      margin-bottom: 28px;
+    }
+
+    @keyframes fadePanel {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .panel-footer-nav {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px dashed var(--border-organic);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-logo-box {
+      width: 118px;
+      height: 118px;
+      margin: 0 auto 16px;
+      border-radius: 30px 14px 30px 14px;
+      overflow: hidden;
+      border: 2px solid var(--green-bright);
+      background: var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.3),
+        0 0 24px var(--glow-a);
+    }
+
+    .hero-logo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      background: var(--glow-a);
+      color: var(--green-bright);
+      border: 1px solid var(--border-leaf);
+      margin-bottom: 12px;
+    }
+
+    .hero-center {
+      text-align: center;
+    }
+
+    h1.hero-title {
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      line-height: 1.15;
+      margin-bottom: 14px;
+      color: var(--text-main);
+    }
+
+    .hero-subtitle {
+      max-width: 760px;
+      margin: 0 auto 24px;
+      color: var(--text-muted);
+      font-size: 1.03rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    .divider-block {
+      border-top: 1px solid var(--border-organic);
+      padding-top: 30px;
+      margin-top: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 18px;
+      border-radius: 14px 8px 14px 8px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-size: 0.92rem;
+      transition: transform 0.16s ease, opacity 0.16s ease, box-shadow 0.16s ease;
+    }
+
+    .btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      opacity: 0.97;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+    }
+
+    .btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green-leaf), #2d6a4f);
+      color: #ffffff;
+      border-color: var(--border-leaf);
+    }
+
+    .btn-secondary {
+      background: var(--bg-elevated);
+      color: var(--text-main);
+      border-color: var(--border-organic);
+    }
+
+    .btn-demo {
+      background: var(--glow-a);
+      color: var(--green-bright);
+      border-color: var(--border-leaf);
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #52b788, #2d6a4f);
+      color: #ffffff;
+      font-weight: 800;
+      border-color: rgba(116, 198, 157, 0.45);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 26px;
+    }
+
+    .section-header h2 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      max-width: 740px;
+      margin: 0 auto;
+    }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .app-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-organic);
+      border-radius: 22px 10px 22px 10px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .app-card:hover {
+      border-color: var(--green-bright);
+      transform: translateY(-2px);
+    }
+
+    .app-icon {
+      font-size: 1.9rem;
+      margin-bottom: 4px;
+    }
+
+    .app-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+      color: var(--text-moss);
+    }
+
+    .app-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    .app-link {
+      color: var(--green-bright);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .app-link:hover {
+      text-decoration: underline;
+    }
+
+    .special-wrap {
+      margin-top: 22px;
+    }
+
+    .special-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .special-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--amber-cosmos), #b87b20);
+      color: #191107;
+      margin-bottom: 8px;
+    }
+
+    .special-btn {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 14px 8px 14px 8px;
+      background: linear-gradient(135deg, var(--amber-cosmos), #b87b20);
+      color: #191107;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .package-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-organic);
+      border-radius: 22px 10px 22px 10px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .package-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--glow-a);
+      color: var(--green-bright);
+      border: 1px solid var(--border-leaf);
+      margin-bottom: 8px;
+    }
+
+    .demo-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--glow-b);
+      color: var(--amber-cosmos);
+      border: 1px solid rgba(212, 155, 53, 0.35);
+      margin-bottom: 8px;
+    }
+
+    .package-price {
+      margin: 6px 0 10px;
+    }
+
+    .package-list {
+      list-style: none;
+      display: grid;
+      gap: 7px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .package-list li::before {
+      content: "🌱 ";
+      font-size: 0.85rem;
+    }
+
+    .package-actions {
+      display: grid;
+      gap: 8px;
+    }
+
+    .demo-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 22px;
+      align-items: start;
+    }
+
+    .info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-organic);
+      border-radius: 22px 10px 22px 10px;
+      padding: 22px;
+    }
+
+    .info-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin: 14px 0 18px;
+      color: var(--text-muted);
+      font-size: 0.94rem;
+    }
+
+    .info-list strong {
+      color: var(--text-moss);
+    }
+
+    .cv-frame {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-organic);
+      border-radius: 16px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .cv-frame img {
+      width: 100%;
+      max-height: 540px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: var(--cv-surface);
+      display: block;
+      margin: 0 auto 12px;
+    }
+
+    .cv-fallback {
+      display: none;
+      padding: 24px 14px;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(7, 11, 8, 0.86);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 200;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-organic);
+      border-radius: 22px 10px 22px 10px;
+      padding: 18px;
+      max-width: 860px;
+      width: 100%;
+      max-height: 90vh;
+      overflow: auto;
+      text-align: center;
+    }
+
+    .modal-box img {
+      max-width: 100%;
+      border-radius: 12px;
+      background: var(--cv-surface);
+      margin-bottom: 14px;
+    }
+
+    footer.site-footer {
+      border-top: 1px solid var(--border-organic);
+      background: var(--footer-bg);
+      padding: 26px 20px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-top: 24px;
+    }
+
+    footer.site-footer a {
+      color: var(--green-bright);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .precio-anterior {
+      text-decoration: line-through;
+      text-decoration-color: #ef4444;
+      text-decoration-thickness: 2px;
+      color: var(--text-muted);
+      opacity: 0.85;
+      margin-right: 8px;
+    }
+
+    .precio-actual {
+      color: var(--green-bright);
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="atmosphere-bar" aria-label="Estaciones y modo de luz">
+    <span class="atmo-label">Bosque y entropía:</span>
+    <button type="button" class="atmo-pill active" data-season="primavera">🌱 Primavera</button>
+    <button type="button" class="atmo-pill" data-season="verano">☀️ Verano</button>
+    <button type="button" class="atmo-pill" data-season="otono">🍂 Otoño</button>
+    <button type="button" class="atmo-pill" data-season="invierno">❄️ Invierno</button>
+    <span class="atmo-label" style="margin-left: 8px;">Luz:</span>
+    <button type="button" class="atmo-pill" id="btn-theme-toggle">🌙 Nocturno</button>
+  </div>
+
+  <!-- MENÚ MODERNO -->
+  <nav class="navbar" aria-label="Menú principal">
+    <div class="nav-inner">
+      <div class="brand-box" data-go-panel="0">
+        <div class="brand-logo-wrap">
+          <img class="mandragora-logo-img" src="imagenes/logomandragora1.jpeg" alt="Logo La Mandrágora Entrópica" />
+        </div>
+        <div>
+          <div class="brand-title">La Mandrágora Entrópica</div>
+          <div class="brand-sub">Apoyo a la comunidad · Desarrollo Web</div>
+        </div>
+      </div>
+
+      <div class="nav-menu">
+        <button type="button" class="nav-tab active" data-go-panel="0">Inicio</button>
+        <button type="button" class="nav-tab" data-go-panel="1">Apps Gratuitas</button>
+        <button type="button" class="nav-tab" data-go-panel="2">Apps de Costo</button>
+        <button type="button" class="nav-tab" data-go-panel="3">Sobre Mí &amp; CV</button>
+        <button type="button" class="btn-wa-sm" data-wa-msg="Hola Jaid, vi tu página de La Mandrágora Entrópica y me gustaría información.">
+          WhatsApp 55 9146 1227
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="explore-stage">
+    <!-- BARRA DE EXPLORACIÓN -->
+    <div class="explore-topbar">
+      <span id="explore-indicator" class="explore-indicator">Explorando: Inicio</span>
+      <div class="explore-nav-btns">
+        <button type="button" id="btn-prev-panel" class="btn btn-secondary" style="padding: 7px 14px; font-size: 0.85rem;" disabled>
+          ← Anterior
+        </button>
+        <button type="button" id="btn-next-panel" class="btn btn-primary" style="padding: 7px 14px; font-size: 0.85rem;">
+          Siguiente →
+        </button>
+        <button type="button" id="btn-toggle-all" class="btn btn-secondary" style="padding: 7px 14px; font-size: 0.85rem;">
+          Ver todo corrido
+        </button>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 1: INICIO (INFORMACIÓN + PAQUETES POSIBLES) -->
+    <section id="sec-inicio" class="explore-panel active" data-panel-title="Inicio">
+      <div class="hero-center">
+        <div class="hero-logo-box">
+          <img class="mandragora-logo-img" src="imagenes/logomandragora1.jpeg" alt="Logo La Mandrágora Entrópica" />
+        </div>
+        <span class="badge">En apoyo a la comunidad · Costos accesibles</span>
+        <h1 class="hero-title">Herramientas web educativas, comerciales y de apoyo comunitario</h1>
+        <p class="hero-subtitle">
+          En <strong>La Mandrágora Entrópica</strong> creamos aplicaciones web accesibles pensadas en apoyo a la comunidad, emprendimientos locales, escuelas y talleres. Conoce nuestros paquetes posibles y explora tanto nuestras herramientas gratuitas como nuestras páginas de prueba.
+        </p>
+        <div class="hero-actions">
+          <button type="button" class="btn btn-primary" data-go-panel="1">Explorar Apps Gratuitas →</button>
+          <button type="button" class="btn btn-secondary" data-go-panel="2">Ver Páginas de Prueba (Apps de Costo)</button>
+          <button type="button" class="btn btn-whatsapp" data-wa-msg="Hola Jaid, quiero platicar sobre una aplicación en apoyo a mi proyecto o comunidad.">
+            WhatsApp 55 9146 1227
+          </button>
+        </div>
+      </div>
+
+      <!-- PAQUETES POSIBLES EN INICIO -->
+      <div class="divider-block">
+        <div class="section-header">
+          <span class="badge">Opciones accesibles en apoyo a la comunidad</span>
+          <h2>Paquetes Posibles a la Medida</h2>
+          <p>
+            Elige el esquema que mejor se adapte a tu proyecto o negocio. Puedes revisar cómo lucen en la sección <strong>Apps de Costo</strong> con nuestras páginas de prueba.
+          </p>
+        </div>
+
+        <div class="packages-grid">
+          <article class="package-card">
+            <div>
+              <span class="package-tag">Presencia Web y Comunidad</span>
+              <h3>Página Informativa / Landing</h3>
+              <div class="package-price">
+                <span class="precio-anterior">$2,500 MXN</span>
+                <span class="precio-actual">$500 – $1,500 MXN</span>
+              </div>
+              <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 12px;">
+                Ideal para dar a conocer tu proyecto local, taller, servicio o iniciativa comunitaria con contacto directo.
+              </p>
+              <ul class="package-list">
+                <li>Diseño adaptable a celular y computadora</li>
+                <li>Secciones claras con tu identidad y contacto por WhatsApp</li>
+                <li>Tarifa solidaria en apoyo a la comunidad</li>
+              </ul>
+            </div>
+            <div class="package-actions">
+              <a
+                id="inicio-demo-landing"
+                href="https://jaid227.github.io/LandingBase/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-demo"
+              >
+                Abrir página de prueba →
+              </a>
+              <button
+                type="button"
+                class="btn btn-whatsapp"
+                data-wa-msg="Hola Jaid, me interesa el paquete de Página Informativa / Landing ($500 - $1,500 MXN)."
+              >
+                Cotizar por WhatsApp
+              </button>
+            </div>
+          </article>
+
+          <article class="package-card">
+            <div>
+              <span class="package-tag">Emprendimiento y Catálogo</span>
+              <h3>Catálogo y Venta de Productos</h3>
+              <div class="package-price">
+                <span class="precio-anterior">$4,500 MXN</span>
+                <span class="precio-actual">$1,500 – $2,500 MXN</span>
+              </div>
+              <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 12px;">
+                Pensado para mostrar tus productos con precios, descripciones y pedidos rápidos sin complicaciones.
+              </p>
+              <ul class="package-list">
+                <li>Vitrina visual organizada por productos o categorías</li>
+                <li>Cálculo de pedido y envío directo por WhatsApp</li>
+                <li>Personalización con tu logo, fotos y colores</li>
+              </ul>
+            </div>
+            <div class="package-actions">
+              <a
+                id="inicio-demo-ventas"
+                href="https://jaid227.github.io/VentaProductosBase/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-demo"
+              >
+                Abrir página de prueba →
+              </a>
+              <button
+                type="button"
+                class="btn btn-whatsapp"
+                data-wa-msg="Hola Jaid, me interesa el paquete de Catálogo y Venta de Productos ($1,500 - $2,500 MXN)."
+              >
+                Cotizar por WhatsApp
+              </button>
+            </div>
+          </article>
+
+          <article class="package-card">
+            <div>
+              <span class="package-tag">Control y Operación Diaria</span>
+              <h3>Sistema de Registro y Control</h3>
+              <div class="package-price">
+                <span class="precio-anterior">$5,500 MXN</span>
+                <span class="precio-actual">$2,000 – $3,000 MXN</span>
+              </div>
+              <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 12px;">
+                Para llevar el control de ventas, movimientos, participantes o reportes de forma ordenada y práctica.
+              </p>
+              <ul class="package-list">
+                <li>Registro ágil de operaciones, ingresos o actividades</li>
+                <li>Totales automáticos y exportación limpia de datos</li>
+                <li>Ajustes y acompañamiento incluidos en la entrega</li>
+              </ul>
+            </div>
+            <div class="package-actions">
+              <a
+                id="inicio-demo-registro"
+                href="https://jaid227.github.io/registro-de-ventas-prueba/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-demo"
+              >
+                Abrir página de prueba →
+              </a>
+              <button
+                type="button"
+                class="btn btn-whatsapp"
+                data-wa-msg="Hola Jaid, me interesa el paquete de Sistema de Registro y Control ($2,000 - $3,000 MXN)."
+              >
+                Cotizar por WhatsApp
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="panel-footer-nav">
+        <span style="color: var(--text-muted); font-size: 0.88rem;">Explora nuestras herramientas gratuitas o las páginas de prueba en el menú superior.</span>
+        <button type="button" class="btn btn-primary" data-go-panel="1">Ir a Apps Gratuitas →</button>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: APPS GRATUITAS -->
+    <section id="sec-gratuitas" class="explore-panel" data-panel-title="Apps Gratuitas">
+      <div class="section-header">
+        <span class="badge">Acceso libre</span>
+        <h2>Aplicaciones Gratuitas</h2>
+        <p>
+          Pruébalas directamente en tu navegador. Están pensadas en apoyo a la comunidad, el aprendizaje, el bienestar y la práctica diaria.
+        </p>
+      </div>
+
+      <div class="apps-grid">
+        <article class="app-card">
+          <div>
+            <div class="app-icon">🌙</div>
+            <h3>FaseLunar</h3>
+            <p>
+              Observatorio del ciclo lunar sinódico (29.53 días) con simulador orbital y vista desde la Tierra, enciclopedia de cultivos y cronobiología, y 6 minijuegos con medallas.
+            </p>
+          </div>
+          <a class="app-link" href="https://jaid227.github.io/FaseLunar/" target="_blank" rel="noopener noreferrer">
+            Abrir FaseLunar gratis →
+          </a>
+        </article>
+
+        <article class="app-card">
+          <div>
+            <div class="app-icon">♻️</div>
+            <h3>EcoClasifica &amp; CompostaLab</h3>
+            <p>
+              Entrenador interactivo de separación de residuos de 8 colores con 3 modos de juego, logros y simulador de composta casera en bote de 8 semanas con aireación y temperatura.
+            </p>
+          </div>
+          <a class="app-link" href="https://jaid227.github.io/-ECO-RETO-/" target="_blank" rel="noopener noreferrer">
+            Jugar EcoClasifica gratis →
+          </a>
+        </article>
+
+        <article class="app-card">
+          <div>
+            <div class="app-icon">🌱</div>
+            <h3>Brote · Un día a la vez</h3>
+            <p>
+              Gestor semanal de hábitos, metas de construir o reducir, diario y estado de ánimo, mapa de 56 días, logros y respaldo/exportación en JSON sin necesidad de cuenta.
+            </p>
+          </div>
+          <a class="app-link" href="https://jaid227.github.io/WeeklyHabits/" target="_blank" rel="noopener noreferrer">
+            Probar Brote gratis →
+          </a>
+        </article>
+
+        <article class="app-card">
+          <div>
+            <div class="app-icon">⌨️</div>
+            <h3>Mecanografía Aérea</h3>
+            <p>
+              Entrenador progresivo de teclado desde la fila guía hasta abecedario, palabras cortas y contrarreloj de 60s, con guía visual por dedo, PPM, precisión y logros.[cite: 1]
+            </p>
+          </div>
+          <a class="app-link" href="https://jaid227.github.io/MecanografiaAerea/" target="_blank" rel="noopener noreferrer">
+            Practicar Mecanografía Aérea →
+          </a>
+        </article>
+      </div>
+
+      <!-- PROYECTO ESPECIAL: INVASIVO -->
+      <div class="special-wrap">
+        <article class="card power-shuffle">
+          <div class="special-inner">
+            <div style="max-width: 740px;">
+              <span class="special-badge">⭐ Proyecto Especial · De la mesa a lo digital</span>
+              <h3 style="font-size: 1.42rem; margin-bottom: 8px;">Invasivo · 36 cartas</h3>
+              <p style="color: var(--text-muted);">
+                Un juego de cartas estratégico que creé en formato físico cuando tenía 12 años y que llevé a la web para jugar partidas en línea. Un ejemplo real de cómo transformamos ideas creativas en experiencias interactivas.
+              </p>
+            </div>
+            <a class="special-btn" href="https://invasivo.infinityfreeapp.com/?i=2" target="_blank" rel="noopener noreferrer">
+              Jugar Invasivo →
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <div class="panel-footer-nav">
+        <button type="button" class="btn btn-secondary" data-go-panel="0">← Volver a Inicio</button>
+        <button type="button" class="btn btn-primary" data-go-panel="2">Ir a Apps de Costo (Páginas de Prueba) →</button>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: APPS DE COSTO (INFORMACIÓN DE LAS PÁGINAS DE PRUEBA) -->
+    <section id="sec-costo" class="explore-panel" data-panel-title="Apps de Costo">
+      <div class="section-header">
+        <span class="badge">Demos interactivas · Versiones de prueba</span>
+        <h2>Páginas de Prueba (Apps de Costo)</h2>
+        <p>
+          Explora estas demostraciones funcionales para ver cómo puede quedar tu sitio o herramienta. Recuerda que son <strong>versiones de prueba</strong>: la versión final se adapta por completo a tu marca, productos y necesidades.
+        </p>
+      </div>
+
+      <div class="packages-grid">
+        <article class="package-card">
+          <div>
+            <span class="demo-tag">Prueba 1 · LandingBase</span>
+            <h3>Página Base Informativa</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem; margin: 8px 0 12px;">
+              Demostración de estructura limpia para presentar un proyecto, taller, organización o servicio con información clara y contacto directo.
+            </p>
+            <ul class="package-list">
+              <li>Muestra cómo se organizan secciones y llamados a la acción</li>
+              <li>Diseño responsivo para teléfono y computadora</li>
+              <li>En la versión completa se personalizan textos, fotos y colores</li>
+            </ul>
+          </div>
+          <div class="package-actions">
+            <a
+              id="demo-link-comunitaria"
+              href="https://jaid227.github.io/LandingBase/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-demo"
+            >
+              Abrir página de prueba →
+            </a>
+            <button
+              type="button"
+              class="btn btn-whatsapp"
+              data-wa-msg="Hola Jaid, ya revisé la prueba LandingBase y me interesa pedir la versión completa."
+            >
+              Pedir versión completa
+            </button>
+            <span class="demo-note">Versión de demostración (no es la versión completa)</span>
+          </div>
+        </article>
+
+        <article class="package-card">
+          <div>
+            <span class="demo-tag">Prueba 2 · VentaProductosBase</span>
+            <h3>Tienda / Catálogo Base de Productos</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem; margin: 8px 0 12px;">
+              Demostración de exhibición de productos para emprendimientos y comercios locales que buscan mostrar artículos y recibir pedidos.
+            </p>
+            <ul class="package-list">
+              <li>Muestra tarjetas de producto, precios y selección rápida</li>
+              <li>Pensado para facilitar pedidos sin procesos complejos</li>
+              <li>En la versión completa se carga todo tu catálogo real</li>
+            </ul>
+          </div>
+          <div class="package-actions">
+            <a
+              id="demo-link-registro"
+              href="https://jaid227.github.io/VentaProductosBase/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-demo"
+            >
+              Abrir página de prueba →
+            </a>
+            <button
+              type="button"
+              class="btn btn-whatsapp"
+              data-wa-msg="Hola Jaid, ya revisé la prueba VentaProductosBase y me interesa pedir la versión completa."
+            >
+              Pedir versión completa
+            </button>
+            <span class="demo-note">Versión de demostración (no es la versión completa)</span>
+          </div>
+        </article>
+
+        <article class="package-card">
+          <div>
+            <span class="demo-tag">Prueba 3 · Registro de Ventas</span>
+            <h3>App de Registro de Ventas (Prueba)</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem; margin: 8px 0 12px;">
+              Demostración de herramienta práctica para capturar ventas, llevar cuentas claras y consultar movimientos del día.
+            </p>
+            <ul class="package-list">
+              <li>Muestra captura rápida de ventas y cálculo de totales</li>
+              <li>Ideal para negocios locales, bazares o proyectos comunitarios</li>
+              <li>En la versión completa se incluyen reportes y reglas a tu medida</li>
+            </ul>
+          </div>
+          <div class="package-actions">
+            <a
+              id="demo-link-medida"
+              href="https://jaid227.github.io/registro-de-ventas-prueba/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-demo"
+            >
+              Abrir página de prueba →
+            </a>
+            <button
+              type="button"
+              class="btn btn-whatsapp"
+              data-wa-msg="Hola Jaid, ya revisé la prueba de Registro de Ventas y me interesa pedir la versión completa."
+            >
+              Pedir versión completa
+            </button>
+            <span class="demo-note">Versión de demostración (no es la versión completa)</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="panel-footer-nav">
+        <button type="button" class="btn btn-secondary" data-go-panel="1">← Volver a Apps Gratuitas</button>
+        <button type="button" class="btn btn-primary" data-go-panel="3">Ir a Sobre Mí &amp; CV →</button>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: SOBRE MÍ, CONTACTO Y CV -->
+    <section id="sec-sobre-mi" class="explore-panel" data-panel-title="Sobre Mí & CV">
+      <div class="section-header">
+        <span class="badge">Perfil y contacto directo</span>
+        <h2>Sobre Mí, Contacto y CV</h2>
+        <p>
+          Conoce mi trabajo en desarrollo web, evaluación de proyectos y apoyo comunitario, revisa mi CV y escríbeme directo.
+        </p>
+      </div>
+
+      <div class="profile-grid">
+        <article class="info-card">
+          <span class="package-tag">Contacto Directo</span>
+          <h3 style="font-size: 1.35rem; margin-top: 4px;">Jaid Lozano Reyes</h3>
+          <p style="color: var(--text-muted); font-size: 0.94rem; margin-top: 6px;">
+            Creadora de <strong>La Mandrágora Entrópica</strong>. Desarrollo aplicaciones web interactivas, herramientas educativas y sistemas en apoyo a la comunidad y evaluación de proyectos.
+          </p>
+
+          <ul class="info-list">
+            <li><strong>Proyecto:</strong> La Mandrágora Entrópica (en apoyo a la comunidad)</li>
+            <li><strong>Teléfono / WhatsApp:</strong> 55 9146 1227</li>
+            <li><strong>Portafolio:</strong> https://github.com/Jaid227</li>
+          </ul>
+
+          <button
+            type="button"
+            class="btn btn-whatsapp"
+            style="width: 100%;"
+            data-wa-msg="Hola Jaid (5591461227), te contacto desde La Mandrágora Entrópica."
+          >
+            Escribir por WhatsApp al 55 9146 1227
+          </button>
+        </article>
+
+        <article class="info-card">
+          <span class="package-tag">Curriculum Vitae</span>
+          <h3 style="font-size: 1.35rem; margin-top: 4px;">Mi CV</h3>
+          <div class="cv-frame" style="margin-top: 12px;">
+            <img id="cv-main-img" src="imagenes/CV.jpeg" alt="Curriculum Vitae de Jaid Lozano Reyes" />
+            <div id="cv-fallback" class="cv-fallback">
+              No se encontró <code>imagenes/CV.jpeg</code> en esta ruta. Asegúrate de colocar <code>CV.jpeg</code> dentro de tu carpeta <code>imagenes</code>.
+            </div>
+            <button type="button" id="btn-zoom-cv" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.88rem;">
+              Ver CV en grande
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <div class="panel-footer-nav">
+        <button type="button" class="btn btn-secondary" data-go-panel="2">← Volver a Apps de Costo</button>
+        <button type="button" class="btn btn-primary" data-go-panel="0">Volver a Inicio</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL PARA VER EL CV AMPLIO -->
+  <div id="cv-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Vista ampliada del CV">
+    <div class="modal-box">
+      <img id="cv-modal-img" src="imagenes/CV.jpeg" alt="CV ampliado de Jaid Lozano Reyes" />
+      <br />
+      <button type="button" id="btn-close-cv" class="btn btn-secondary">Cerrar vista</button>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>
+      La Mandrágora Entrópica · En apoyo a la comunidad · WhatsApp: <a href="https://wa.me/5215591461227" target="_blank" rel="noopener noreferrer">55 9146 1227</a>
+    </p>
+  </footer>
+
+  <script>
+    // 4 ESTACIONES + MODO NOCTURNO / CLARO
+    const seasonButtons = Array.from(document.querySelectorAll("[data-season]"));
+    const btnThemeToggle = document.getElementById("btn-theme-toggle");
+
+    function setSeason(seasonName) {
+      document.body.setAttribute("data-season", seasonName);
+      seasonButtons.forEach((btn) => {
+        btn.classList.toggle("active", btn.getAttribute("data-season") === seasonName);
+      });
+    }
+
+    function setTheme(themeName) {
+      document.body.setAttribute("data-theme", themeName);
+      btnThemeToggle.textContent = themeName === "claro" ? "☀️ Claro" : "🌙 Nocturno";
+    }
+
+    seasonButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        setSeason(btn.getAttribute("data-season"));
+      });
+    });
+
+    btnThemeToggle.addEventListener("click", () => {
+      const current = document.body.getAttribute("data-theme") || "nocturno";
+      setTheme(current === "nocturno" ? "claro" : "nocturno");
+    });
+
+    setSeason("primavera");
+    setTheme("nocturno");
+
+    // ENLACES DE PRUEBA (sin IDs duplicados)
+    const DEMO_LINKS = {
+      comunitaria: "https://jaid227.github.io/LandingBase/",
+      registro: "https://jaid227.github.io/VentaProductosBase/",
+      medida: "https://jaid227.github.io/registro-de-ventas-prueba/"
+    };
+
+    const inicioDemoLanding = document.getElementById("inicio-demo-landing");
+    const inicioDemoVentas = document.getElementById("inicio-demo-ventas");
+    const inicioDemoRegistro = document.getElementById("inicio-demo-registro");
+    const linkComunitaria = document.getElementById("demo-link-comunitaria");
+    const linkRegistro = document.getElementById("demo-link-registro");
+    const linkMedida = document.getElementById("demo-link-medida");
+
+    if (inicioDemoLanding) inicioDemoLanding.href = DEMO_LINKS.comunitaria;
+    if (inicioDemoVentas) inicioDemoVentas.href = DEMO_LINKS.registro;
+    if (inicioDemoRegistro) inicioDemoRegistro.href = DEMO_LINKS.medida;
+    if (linkComunitaria) linkComunitaria.href = DEMO_LINKS.comunitaria;
+    if (linkRegistro) linkRegistro.href = DEMO_LINKS.registro;
+    if (linkMedida) linkMedida.href = DEMO_LINKS.medida;
+
+    // 1. NAVEGACIÓN PARA EXPLORAR SECCIONES
+    const panels = Array.from(document.querySelectorAll(".explore-panel"));
+    const tabs = Array.from(document.querySelectorAll(".nav-tab"));
+    const indicator = document.getElementById("explore-indicator");
+    const btnPrev = document.getElementById("btn-prev-panel");
+    const btnNext = document.getElementById("btn-next-panel");
+    const btnToggleAll = document.getElementById("btn-toggle-all");
+    let currentPanel = 0;
+    let allPanelsMode = false;
+
+    function renderPanel(index) {
+      if (index < 0 || index >= panels.length) return;
+      currentPanel = index;
+
+      panels.forEach((panel, i) => {
+        panel.classList.toggle("active", i === currentPanel);
+      });
+
+      tabs.forEach((tab) => {
+        const tabIndex = Number(tab.getAttribute("data-go-panel"));
+        tab.classList.toggle("active", !allPanelsMode && tabIndex === currentPanel);
+      });
+
+      const title = panels[currentPanel].getAttribute("data-panel-title") || "";
+      indicator.textContent = allPanelsMode
+        ? "Modo corrido · Todas las secciones visibles"
+        : `Explorando: ${title}`;
+
+      btnPrev.disabled = allPanelsMode || currentPanel === 0;
+      btnNext.disabled = allPanelsMode || currentPanel === panels.length - 1;
+    }
+
+    document.querySelectorAll("[data-go-panel]").forEach((el) => {
+      el.addEventListener("click", () => {
+        const targetIndex = Number(el.getAttribute("data-go-panel"));
+        if (allPanelsMode) {
+          const targetSection = panels[targetIndex];
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+          return;
+        }
+        renderPanel(targetIndex);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+
+    btnPrev.addEventListener("click", () => {
+      renderPanel(currentPanel - 1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    btnNext.addEventListener("click", () => {
+      renderPanel(currentPanel + 1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    btnToggleAll.addEventListener("click", () => {
+      allPanelsMode = !allPanelsMode;
+      document.body.classList.toggle("show-all-panels", allPanelsMode);
+      btnToggleAll.textContent = allPanelsMode ? "Explorar una por una" : "Ver todo corrido";
+      renderPanel(currentPanel);
+    });
+
+    // 2. RESPALDO DE RUTA PARA LOGO (imagenes/logomandragora1.jpeg) Y CV (imagenes/CV.jpeg)
+    document.querySelectorAll(".mandragora-logo-img").forEach((img) => {
+      img.addEventListener("error", () => {
+        if (!img.dataset.fallbackTried) {
+          img.dataset.fallbackTried = "1";
+          img.src = "logomandragora1.jpeg";
+        }
+      });
+    });
+
+    const cvMainImg = document.getElementById("cv-main-img");
+    const cvModalImg = document.getElementById("cv-modal-img");
+    const cvFallback = document.getElementById("cv-fallback");
+    const btnZoomCv = document.getElementById("btn-zoom-cv");
+
+    cvMainImg.addEventListener("error", () => {
+      if (!cvMainImg.dataset.fallbackTried) {
+        cvMainImg.dataset.fallbackTried = "1";
+        cvMainImg.src = "CV.jpeg";
+        cvModalImg.src = "CV.jpeg";
+        return;
+      }
+      cvMainImg.style.display = "none";
+      btnZoomCv.style.display = "none";
+      cvFallback.style.display = "block";
+    });
+
+    // 3. BOTÓN INTELIGENTE DE WHATSAPP (5591461227)
+    const WA_PHONE = "5215591461227";
+    document.querySelectorAll("[data-wa-msg]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const msg = btn.getAttribute("data-wa-msg") || "Hola Jaid, me gustaría información de La Mandrágora Entrópica.";
+        window.open(`https://wa.me/${WA_PHONE}?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
+      });
+    });
+
+    // 4. MODAL DE CV
+    const cvModal = document.getElementById("cv-modal");
+    const btnCloseCv = document.getElementById("btn-close-cv");
+
+    btnZoomCv.addEventListener("click", () => cvModal.classList.add("open"));
+    btnCloseCv.addEventListener("click", () => cvModal.classList.remove("open"));
+    cvModal.addEventListener("click", (e) => {
+      if (e.target === cvModal) cvModal.classList.remove("open");
+    });
+
+    renderPanel(0);
+  </script>
+</body>
+</html>
